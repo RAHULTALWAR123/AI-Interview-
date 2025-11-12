@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import ColorBends from "./components/ColorBends";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,7 +23,28 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="min-h-screen text-white flex flex-col relative">
+          {/* Background - fixed positioning with proper z-index */}
+          <div className="fixed inset-0 -z-10">
+            <ColorBends
+              colors={["#0a87e6"]}
+              rotation={0}
+              speed={0.2}
+              scale={1}
+              frequency={1}
+              warpStrength={1}
+              mouseInfluence={1}
+              parallax={0.5}
+              noise={0.1}
+              transparent={false} // Set to false for better visibility
+            />
+          </div>
+          
+          {/* Content with higher z-index */}
+          <div className="relative z-10">
+            {children}
+          </div>
+        </div>
       </body>
     </html>
   );
