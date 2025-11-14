@@ -23,7 +23,8 @@ model Interview {
   jobDescription  String?
   resumeUrl       String?
   interviewType   String?       // e.g. "AI", "Technical", "HR"
-  status          String        @default("ongoing") // ongoing, completed
+  difficulty      String?       // e.g. "Easy", "Medium", "Hard"
+  status          String        @default("ongoing")
   createdAt       DateTime      @default(now())
   updatedAt       DateTime      @updatedAt
   messages        Message[]
